@@ -4,6 +4,8 @@ const newFormHandler = async (event) => {
   const name = document.querySelector('#title').value.trim();
   const description = document.querySelector('#post').value.trim();
 
+  console.log('Payload:', { name, description });
+
   if (name && description) {
     const response = await fetch(`/api/projects`, {
       method: 'POST',
@@ -16,8 +18,12 @@ const newFormHandler = async (event) => {
     if (response.ok) {
       document.location.replace('/profile');
     } else {
-      alert('Failed to create project');
+      const errorData = await response.json();
+      console.error('Error response:', errorData);
+      alert(`Failed to create project: ${errorData.message}`);
     }
+  } else {
+    alert('Please enter a project name and description.');
   }
 };
 
