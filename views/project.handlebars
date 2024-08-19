@@ -2,6 +2,28 @@
   <h2>{{name}}</h2>
   <p>{{description}}</p>
   <p>Created by {{user.name}} on {{format_date date_created}}</p>
-    <button id="commentButton" class="btn btn-primary">Comment on this post</button>
-  </p>
+  <h3>Comments:</h3>
+  <ul id="comment-list">
+    {{#each comments}}
+    <li>
+      <p>{{text}}</p>
+      <p>Posted by {{user.name}} on {{format_date date_created}}</p>
+    </li>
+    {{else}}
+    <p>No comments yet.</p>
+    {{/each}}
+  </ul>
+
+  {{#if logged_in}}
+  <form id="comment-form">
+    <textarea id="comment-text" placeholder="Write a comment..." required></textarea>
+    <input type="hidden" id="project-id" value="{{id}}" />
+    <br>
+    <button type="submit" class="btn btn-primary">Comment on this post</button>
+  </form>
+  {{else}}
+  <p><a href="/login">Log in</a> to comment.</p>
+  {{/if}}
 </div>
+
+<script src="/js/comment.js"></script>

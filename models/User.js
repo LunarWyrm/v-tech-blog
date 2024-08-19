@@ -55,4 +55,8 @@ User.init(
   }
 );
 
+User.hasMany(Comment, {
+  foreignKey: 'user_id',
+});
+
 module.exports = User;

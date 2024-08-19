@@ -1,5 +1,5 @@
 const router = require('express').Router();
-const { Project, User } = require('../models');
+const { Project, User, Comment } = require('../models');
 const withAuth = require('../utils/auth');
 
 router.get('/', async (req, res) => {
@@ -10,6 +10,10 @@ router.get('/', async (req, res) => {
         {
           model: User,
           attributes: ['name'],
+        },
+        {
+          model: Comment,
+          include: [User],
         },
       ],
     });
@@ -46,6 +50,21 @@ router.get('/project/:id', async (req, res) => {
     });
   } catch (err) {
     res.status(500).json(err);
+  }
+});
+
+// post comments
+router.post('/comment', withAuth, async (req, res) => {
+  try {
+    const newComment = await Comment.create({
+      text: req.body.text,
+      user_id: req.session.user_id,
+      project_id: req.body.project_id,
+    });
+
+    res.status(200).json(newComment);
+  } catch (err) {
+    res.status(400).json(err);
   }
 });
 
