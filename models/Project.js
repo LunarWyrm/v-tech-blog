@@ -1,5 +1,7 @@
 const { Model, DataTypes } = require('sequelize');
 const sequelize = require('../config/connection');
+const User = require('./User'); 
+const Comment = require('./Comment');
 
 class Project extends Model {}
 
@@ -39,10 +41,6 @@ Project.init(
     modelName: 'project',
   }
 );
-
-Project.hasMany(Comment, {
-  foreignKey: 'project_id',
-});
 
 
 module.exports = Project;

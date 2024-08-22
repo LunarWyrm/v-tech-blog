@@ -19,4 +19,13 @@ document.getElementById('comment-form').addEventListener('submit', async (event)
         alert('Failed to post comment.');
       }
     }
+
+    const project = await Project.findByPk(projectId, {
+      include: [
+        {
+          model: Comment,
+          include: [User],
+        },
+      ],
+    });
   });

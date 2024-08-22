@@ -1,5 +1,27 @@
+body {
+  color: aliceblue;
+  background-color: #1e1836;
+}
+
+.blogName {
+  font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+  color: #7a6ad8;
+  text-shadow: 2.5px 1px 0px #e6d9ff;
+}
+
+#headerBar {
+  background: linear-gradient(135deg, rgba(98,76,164,1) 0%,rgba(26,35,54,1) 46%,rgba(11,22,51,1) 50%,rgba(26,35,54,1) 53%,rgba(52,40,86,1) 76%,rgba(26,35,54,1) 87%,rgba(26,35,54,1) 100%);}
+
+.navItems {
+  color: #7a6ad8;
+}
+
 header, .project:not(:last-child) {
   border-bottom: 1px solid #ccc;
+}
+
+.projectName {
+  color: #9081cc;
 }
 
 .no-button {
@@ -7,18 +29,13 @@ header, .project:not(:last-child) {
   border: none;
   padding: 0;
   cursor: pointer;
-  color: #1b89bc;
+  color: #2b1bbc;
   text-decoration: none;
   font-size: 100%;
 }
 
 .no-button:hover {
-  color: #065b83;
+  color: #190683;
   text-decoration: underline;
 }
 
-.dollar-amount {
-  color: #056605;
-  font-weight: bold;
-  margin-left: -5px;
-}
