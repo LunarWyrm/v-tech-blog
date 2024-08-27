@@ -7,9 +7,11 @@ if (process.env.DB_URL) {
   sequelize = new Sequelize(process.env.DB_URL);
 } else {
   sequelize = new Sequelize(
-    process.env.DB_NAME,
+    process.env.DB_HOST,
+    process.env.DB_PORT,
     process.env.DB_USER,
     process.env.DB_PASSWORD,
+    process.env.DB_NAME,
     {
       host: 'localhost',
       dialect: 'postgres',
